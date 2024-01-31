@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Server</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      var documento=document.querySelector('body');
+      socket.on('connect', () => {
+        console.log(socket.id);
+      })
+
+      socket.on("server", (msg) => {
+        var elemento=document.createElement('p');
+        elemento.innerText=msg;
+        documento.appendChild(elemento);
+      });
+    </script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+      </div>
+    </nav>
+    
+      <div class="row">
+        <div class="col-2" style="background-color:aqua">
+          One of three columns
+        </div>
+        <div class="col-4" style="background-color:red">
+          One of three columns
+        </div>
+        <div class="col-6" style="background-color:green">
+          One of three columns
+        </div>
+      </div>
+   
+  </body>
+</html>
